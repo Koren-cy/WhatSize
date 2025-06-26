@@ -307,8 +307,8 @@ function DPICalibration({ onClose, onCalibrationComplete }) {
   const [calculatedDPI, setCalculatedDPI] = useState(null);
   const [calibrationHistory, setCalibrationHistory] = useState([]);
   const [systemInfo] = useState({
-    screenWidth: window.screen.width,
-    screenHeight: window.screen.height,
+    screenWidth: Math.round(window.screen.width * window.devicePixelRatio),
+    screenHeight: Math.round(window.screen.height * window.devicePixelRatio),
     devicePixelRatio: window.devicePixelRatio,
     estimatedDPI: Math.round(window.devicePixelRatio * 96)
   });
@@ -438,7 +438,7 @@ function DPICalibration({ onClose, onCalibrationComplete }) {
             <SectionTitle>系统信息</SectionTitle>
             <InfoCard>
               <InfoRow>
-                <InfoLabel>屏幕分辨率:</InfoLabel>
+                <InfoLabel>物理分辨率:</InfoLabel>
                 <InfoValue>{systemInfo.screenWidth} × {systemInfo.screenHeight}</InfoValue>
               </InfoRow>
               <InfoRow>

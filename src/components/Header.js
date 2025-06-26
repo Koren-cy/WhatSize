@@ -63,8 +63,8 @@ const InfoLabel = styled.span`
 function Header() {
   // 获取屏幕DPI信息
   const dpi = window.devicePixelRatio * 96; // 估算DPI
-  const screenWidth = window.screen.width;
-  const screenHeight = window.screen.height;
+  const screenWidth = Math.round(window.screen.width * window.devicePixelRatio);
+  const screenHeight = Math.round(window.screen.height * window.devicePixelRatio);
 
   return (
     <HeaderContainer>
@@ -80,7 +80,7 @@ function Header() {
         </InfoItem>
         <InfoItem>
           <InfoValue>{screenWidth}×{screenHeight}</InfoValue>
-          <InfoLabel>屏幕分辨率</InfoLabel>
+          <InfoLabel>物理分辨率</InfoLabel>
         </InfoItem>
         <InfoItem>
           <InfoValue>{window.devicePixelRatio}×</InfoValue>
